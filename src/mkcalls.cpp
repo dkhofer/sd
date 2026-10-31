@@ -1671,6 +1671,10 @@ const char *predtab[] = {
    "base_is_right",
    "base_is_here",
    "base_is_left",
+   "facing_away_from_caller",
+   "facing_callers_right",
+   "facing_caller",
+   "facing_callers_left",
    ""};
 
 // The "tag table" is the table that we use to bind together things like

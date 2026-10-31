@@ -8431,6 +8431,169 @@ call "@eright@f roll to a wave" a1
    setup 2x1 1x2 rotate
       array [0 CM1E]
 
+// Compass directions specify the side toward which the leaders roll,
+// relative to the caller.  Each dancer chooses independently, so the result
+// may be asymmetric.  Keep the existing relative left/right calls above.
+call "roll north to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [ZM0W CM1E]
+         if facing_callers_left [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [0 CM1E]
+         if facing_callers_left [0 AM0E]
+
+call "north roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [ZM0W CM1E]
+         if facing_callers_left [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [0 CM1E]
+         if facing_callers_left [0 AM0E]
+
+call "leads roll north to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [ZM0W CM1E]
+         if facing_callers_left [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [0 CM1E]
+         if facing_callers_left [0 AM0E]
+
+call "leads north roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [ZM0W CM1E]
+         if facing_callers_left [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll north from this facing direction."
+         if facing_callers_right [0 CM1E]
+         if facing_callers_left [0 AM0E]
+
+call "roll south to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [ZM0W CM1E]
+         if facing_callers_right [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [0 CM1E]
+         if facing_callers_right [0 AM0E]
+
+call "south roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [ZM0W CM1E]
+         if facing_callers_right [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [0 CM1E]
+         if facing_callers_right [0 AM0E]
+
+call "leads roll south to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [ZM0W CM1E]
+         if facing_callers_right [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [0 CM1E]
+         if facing_callers_right [0 AM0E]
+
+call "leads south roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [ZM0W CM1E]
+         if facing_callers_right [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll south from this facing direction."
+         if facing_callers_left [0 CM1E]
+         if facing_callers_right [0 AM0E]
+
+call "roll east to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [ZM0W CM1E]
+         if facing_away_from_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [0 CM1E]
+         if facing_away_from_caller [0 AM0E]
+
+call "east roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [ZM0W CM1E]
+         if facing_away_from_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [0 CM1E]
+         if facing_away_from_caller [0 AM0E]
+
+call "leads roll east to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [ZM0W CM1E]
+         if facing_away_from_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [0 CM1E]
+         if facing_away_from_caller [0 AM0E]
+
+call "leads east roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [ZM0W CM1E]
+         if facing_away_from_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll east from this facing direction."
+         if facing_caller [0 CM1E]
+         if facing_away_from_caller [0 AM0E]
+
+call "roll west to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [ZM0W CM1E]
+         if facing_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [0 CM1E]
+         if facing_caller [0 AM0E]
+
+call "west roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [ZM0W CM1E]
+         if facing_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [0 CM1E]
+         if facing_caller [0 AM0E]
+
+call "leads roll west to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [ZM0W CM1E]
+         if facing_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [0 CM1E]
+         if facing_caller [0 AM0E]
+
+call "leads west roll to a wave" a1
+   setup 2x1 1x2 rotate qualifier all_facing_same
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [ZM0W CM1E]
+         if facing_caller [ZM1W AM0E]
+   setup 2x1 1x2 rotate
+      preds "Cannot roll west from this facing direction."
+         if facing_away_from_caller [0 CM1E]
+         if facing_caller [0 AM0E]
+
 // Latch on is legal even if both people are facing.
 call "permissive leads roll @eright@f to a wave" dontshow tag permissiveleadsrollright
             left_means_mirror

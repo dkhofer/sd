@@ -3035,6 +3035,23 @@ static bool lateral_to_sex(setup *real_people, int real_index,
    return this_person2 && other_person2 && ((this_person2 ^ other_person2) == *extra_stuff);
 }
 
+// Use the original caller-relative facing bits, which survive local setup
+// rotations and splitting.  Compass roll-to-a-wave definitions choose each
+// dancer's clockwise/anticlockwise action independently.
+static bool absolute_facing(setup *real_people, int real_index,
+   int, int, const int32_t *extra_stuff)
+{
+   // Setup menus test shapes in one arbitrary orientation.  Accept the first
+   // (right-roll) branch there; check the actual compass direction at runtime.
+   if (interactivity == interactivity_database_init) return true;
+
+   static const uint32_t flags[] = {
+      ID3_FACEBACK, ID3_FACERIGHT, ID3_FACEFRONT, ID3_FACELEFT
+   };
+   return (real_people->people[real_index].id3 & flags[extra_stuff[0]]) != 0;
+}
+
+
 /* ARGSUSED */
 static bool directionp(setup *real_people, int real_index,
    int real_direction, int northified_index, const int32_t *extra_stuff)
@@ -3508,7 +3525,11 @@ predicate_descriptor pred_table[] = {
       {whos_on_base,                   &iden_tab[0]},            // "base_is_across"
       {whos_on_base,                   &iden_tab[4]},            // "base_is_right"
       {whos_on_base,                   &iden_tab[8]},            // "base_is_here"
-      {whos_on_base,                   &iden_tab[12]}};          // "base_is_left"
+      {whos_on_base,                   &iden_tab[12]},           // "base_is_left"
+      {absolute_facing,                 &iden_tab[0]},           // "facing_away_from_caller"
+      {absolute_facing,                 &iden_tab[1]},           // "facing_callers_right"
+      {absolute_facing,                 &iden_tab[2]},           // "facing_caller"
+      {absolute_facing,                 &iden_tab[3]}};          // "facing_callers_left"
 
 int selector_preds = SELECTOR_PREDS;
 int start_of_facing_tests = START_OF_FACING_TESTS;
