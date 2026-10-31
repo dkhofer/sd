@@ -14,7 +14,7 @@ MKCALLS_OBJS = mkcalls.o common.o
 OBJS = $(sort $(SD_OBJS) $(TTY_OBJS) $(MKCALLS_OBJS))
 DEPS = $(OBJS:.o=.d)
 
-.PHONY: all clean
+.PHONY: all clean test-compass
 all: sdtty sd_calls.dat
 
 sdtty: $(SD_OBJS) $(TTY_OBJS)
@@ -31,5 +31,14 @@ sd_calls.dat: sd_calls.txt mkcalls
 
 -include $(DEPS)
 
+test-compass: compass-selectors-test
+	./compass-selectors-test
+
+sdui-tty-test.o: sdui-tty.cpp $(wildcard *.h)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -Dmain=sdtty_program_main -c $< -o $@
+
+compass-selectors-test: ../tests/compass_selectors.cpp $(wildcard *.h) $(SD_OBJS) sdmatch.o sdui-ttu.o sdui-tty-test.o
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -UNDEBUG -I. $(LDFLAGS) -o $@ $< $(SD_OBJS) sdmatch.o sdui-ttu.o sdui-tty-test.o $(LDLIBS)
+
 clean:
-	$(RM) $(OBJS) $(DEPS) sdtty mkcalls sd_calls.dat
+	$(RM) $(OBJS) $(DEPS) sdtty mkcalls sd_calls.dat sdui-tty-test.o compass-selectors-test

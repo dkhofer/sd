@@ -67,6 +67,44 @@ extern bool selectp(const setup *ss, int place, int allow_some /*= 0*/) THROW_DE
    if (local_selector == selector_verycenters)
       local_selector = selector_center2;
 
+   switch (local_selector) {
+   case selector_northerners:
+   case selector_north: local_selector = selector_nearfour; break;
+   case selector_north_line: local_selector = selector_nearline; break;
+   case selector_north_column: local_selector = selector_nearcolumn; break;
+   case selector_north_box: local_selector = selector_nearbox; break;
+   case selector_north_2: local_selector = selector_neartwo; break;
+   case selector_north_3: local_selector = selector_nearthree; break;
+   case selector_north_4: local_selector = selector_nearfour; break;
+   case selector_north_5: local_selector = selector_nearfive; break;
+   case selector_north_6: local_selector = selector_nearsix; break;
+   case selector_north_7: local_selector = selector_nearseven; break;
+   case selector_north_triangle: local_selector = selector_neartriangle; break;
+   case selector_southerners:
+   case selector_south: local_selector = selector_farfour; break;
+   case selector_south_line: local_selector = selector_farline; break;
+   case selector_south_column: local_selector = selector_farcolumn; break;
+   case selector_south_box: local_selector = selector_farbox; break;
+   case selector_south_2: local_selector = selector_fartwo; break;
+   case selector_south_3: local_selector = selector_farthree; break;
+   case selector_south_4: local_selector = selector_farfour; break;
+   case selector_south_5: local_selector = selector_farfive; break;
+   case selector_south_6: local_selector = selector_farsix; break;
+   case selector_south_7: local_selector = selector_farseven; break;
+   case selector_south_triangle: local_selector = selector_fartriangle; break;
+   case selector_easterners:
+   case selector_east_4: local_selector = selector_east; break;
+   case selector_east_line: local_selector = selector_lineleft; break;
+   case selector_east_column: local_selector = selector_columnleft; break;
+   case selector_east_box: local_selector = selector_boxleft; break;
+   case selector_westerners:
+   case selector_west_4: local_selector = selector_west; break;
+   case selector_west_line: local_selector = selector_lineright; break;
+   case selector_west_column: local_selector = selector_columnright; break;
+   case selector_west_box: local_selector = selector_boxright; break;
+   default: break;
+   }
+
    // Pull out the cases that do not require the person to be real.
 
    switch (local_selector) {
@@ -546,6 +584,14 @@ extern bool selectp(const setup *ss, int place, int allow_some /*= 0*/) THROW_DE
    case selector_boxright:
       if      (pid3 & ID3_RIGHTBOX) return true;
       else if (pid3 & (ID3_LEFTBOX|ID3_LEFTCOL|ID3_LEFTLINE)) return false;
+      break;
+   case selector_east:
+      if (pid3 & ID3_EASTFOUR) return true;
+      else if (pid3 & ID3_WESTFOUR) return false;
+      break;
+   case selector_west:
+      if (pid3 & ID3_WESTFOUR) return true;
+      else if (pid3 & ID3_EASTFOUR) return false;
       break;
    case selector_nearline:
       if      (pid3 & ID3_NEARLINE) return true;

@@ -914,7 +914,8 @@ enum {
    ID3_NEARSIX      = 0x00002000U,
    ID3_FARSIX       = 0x00001000U,
 
-   // 2 available codes.
+   ID3_EASTFOUR     = 0x00000800U,  // Half on the caller's left.
+   ID3_WESTFOUR     = 0x00000400U,  // Half on the caller's right.
 
    ID3_FACEFRONT  = 0x00000200U,
    ID3_FACEBACK   = 0x00000100U,
@@ -938,7 +939,7 @@ enum {
       ID3_FARTHEST1|ID3_NOTFARTHEST1|ID3_NEAREST1|ID3_NOTNEAREST1|
       ID3_NEARTWO|ID3_FARTWO|ID3_NEARSIX|ID3_FARSIX|
       ID3_LEFTCOL|ID3_LEFTLINE|ID3_LEFTBOX|
-      ID3_RIGHTCOL|ID3_RIGHTLINE|ID3_RIGHTBOX
+      ID3_RIGHTCOL|ID3_RIGHTLINE|ID3_RIGHTBOX|ID3_EASTFOUR|ID3_WESTFOUR
 };
 
 
@@ -1509,6 +1510,42 @@ enum selector_kind {
    selector_farseven,
    selector_neartriangle,
    selector_fartriangle,
+   selector_north,
+   selector_north_line,
+   selector_north_column,
+   selector_north_box,
+   selector_north_2,
+   selector_north_3,
+   selector_north_4,
+   selector_north_5,
+   selector_north_6,
+   selector_north_7,
+   selector_north_triangle,
+   selector_south,
+   selector_south_line,
+   selector_south_column,
+   selector_south_box,
+   selector_south_2,
+   selector_south_3,
+   selector_south_4,
+   selector_south_5,
+   selector_south_6,
+   selector_south_7,
+   selector_south_triangle,
+   selector_east,
+   selector_east_4,
+   selector_east_line,
+   selector_east_column,
+   selector_east_box,
+   selector_west,
+   selector_west_4,
+   selector_west_line,
+   selector_west_column,
+   selector_west_box,
+   selector_northerners,
+   selector_southerners,
+   selector_easterners,
+   selector_westerners,
    selector_the2x3,
    selector_thetriangle,
    selector_thediamond,

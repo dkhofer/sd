@@ -6833,6 +6833,13 @@ void setup::put_in_absolute_proximity_and_facing_bits()
          }
       }
 
+      // Compass east/west are fixed to the caller, independent of dancer facing.
+      // Require a strict left/right split; never split a tied coordinate group.
+      if (Hsize == 8 && (Htable[3] >> 24) < (Htable[4] >> 24)) {
+         for (int j = 0; j < Hsize; j++)
+            people[Htable[j] & 0xFF].id3 |= j < 4 ? ID3_EASTFOUR : ID3_WESTFOUR;
+      }
+
       check_near_far_wrapper(this, Vsize, Vtable, 1, false, ID3_NEAREST1, ID3_FARTHEST1);
       check_near_far_wrapper(this, Vsize, Vtable, 2, false, ID3_NEARTWO, ID3_FARTWO);
       check_near_far_wrapper(this, Vsize, Vtable, 3, false, ID3_NEARTHREE, ID3_FARTHREE);

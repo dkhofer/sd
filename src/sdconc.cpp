@@ -6126,6 +6126,8 @@ extern void inner_selective_move(
             warn_about_concept_level();
          // FALL THROUGH
       case selector_thetriangle:
+      case selector_north_triangle:
+      case selector_south_triangle:
       case selector_neartriangle:
       case selector_fartriangle:
       case selector_outside_tgl:
