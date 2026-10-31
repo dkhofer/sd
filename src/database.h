@@ -45,7 +45,7 @@
 // database format version.
 
 #define DATABASE_MAGIC_NUM 21316
-#define DATABASE_FORMAT_VERSION 435
+#define DATABASE_FORMAT_VERSION 436
 
 
 // We used to do some stuff to cater to compiler vendors (e.g. Sun
@@ -477,7 +477,13 @@ enum {
    MTX_INCLUDE_PHANTOMS       = 0x10000,
    MTX_NOT_TRUE_INVADER       = 0x20000,
    MTX_SELECTOR_IS_TRAILERS   = 0x40000,
-   MTX_DO_HALF_OF_CTR_ROT     = 0x80000
+   MTX_DO_HALF_OF_CTR_ROT     = 0x80000,
+   MTX_REQUIRE_NORTH         = 0x100000,
+   MTX_REQUIRE_SOUTH         = 0x200000,
+   MTX_REQUIRE_EAST          = 0x400000,
+   MTX_REQUIRE_WEST          = 0x800000,
+   MTX_REQUIRE_CARDINAL_MASK = MTX_REQUIRE_NORTH | MTX_REQUIRE_SOUTH |
+                               MTX_REQUIRE_EAST | MTX_REQUIRE_WEST
 };
 
 

@@ -1440,6 +1440,10 @@ const char *matrixcallflagtab[] = {
    "not_true_invader",
    "selector_is_trailers",
    "do_half_of_ctr_rot",
+   "require_north",
+   "require_south",
+   "require_east",
+   "require_west",
    ""};
 
 // BEWARE!!  This list must track the array "pred_table" in sdpreds.cpp .

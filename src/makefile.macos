@@ -14,7 +14,7 @@ MKCALLS_OBJS = mkcalls.o common.o
 OBJS = $(sort $(SD_OBJS) $(TTY_OBJS) $(MKCALLS_OBJS))
 DEPS = $(OBJS:.o=.d)
 
-.PHONY: all clean test-compass test-compass-roll test-compass-run test-compass-trade
+.PHONY: all clean test-compass test-compass-roll test-compass-run test-compass-trade test-compass-quarter test-compass-press
 all: sdtty sd_calls.dat
 
 sdtty: $(SD_OBJS) $(TTY_OBJS)
@@ -30,6 +30,12 @@ sd_calls.dat: sd_calls.txt mkcalls
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
+
+test-compass-press: all
+	python3 ../tests/compass_press.py
+
+test-compass-quarter: all
+	python3 ../tests/compass_quarter.py
 
 test-compass-trade: all
 	python3 ../tests/compass_trade.py

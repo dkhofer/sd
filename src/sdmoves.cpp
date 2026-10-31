@@ -7590,6 +7590,33 @@ void really_inner_move(
             fail("Illegal concept for this call.");
 
          uint32_t flags = callspec->stuff.matrix.matrix_flags;
+
+         // Cardinal presses are forward movement, not a turn or a sideways
+         // translation. Validate all live dancers before applying any movement.
+         // Menu construction tests shapes in an arbitrary orientation.
+         if ((flags & MTX_REQUIRE_CARDINAL_MASK) &&
+             interactivity != interactivity_database_init) {
+            int required_direction;
+            const char *direction_name;
+            switch (flags & MTX_REQUIRE_CARDINAL_MASK) {
+            case MTX_REQUIRE_NORTH: required_direction = 2; direction_name = "north"; break;
+            case MTX_REQUIRE_SOUTH: required_direction = 0; direction_name = "south"; break;
+            case MTX_REQUIRE_EAST: required_direction = 3; direction_name = "east"; break;
+            case MTX_REQUIRE_WEST: required_direction = 1; direction_name = "west"; break;
+            default: fail("Invalid cardinal facing requirement.");
+            }
+
+            const std::string message = std::string("Press ") + direction_name +
+               " requires every dancer to already face " + direction_name + ".";
+            if ((ss->result_flags.misc & RESULTFLAG__IMPRECISE_ROT) || ss->eighth_rotation)
+               fail(message);
+            for (int i = 0; i <= attr::slimit(ss); i++) {
+               if ((ss->people[i].id1 & BIT_PERSON) &&
+                   ((ss->people[i].id1 + ss->rotation +
+                     ss->rotation_offset_from_true_north) & 3) != required_direction)
+                  fail(message);
+            }
+         }
          if ((flags & MTX_ONLY_IN) && current_options.where != direction_in) fail("Can't use this selector.");
          if ((flags & MTX_ONLY_OUT) && current_options.where != direction_out) fail("Can't use this selector.");
          matrix_def_block *base_block = callspec->stuff.matrix.matrix_def_list;

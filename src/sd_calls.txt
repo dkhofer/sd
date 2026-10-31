@@ -5980,6 +5980,48 @@ call "@6 1/2 press ahead" mainstream
             dont_use_in_resolve
    matrix use_selector [ZM16N 18 ZM16N 18]
 
+// Cardinal presses require every dancer to already face the named direction.
+// They then perform the ordinary forward press, preserving all facings.
+call "press north" mainstream
+            dont_use_in_resolve
+   matrix require_north [ZM16N 20 ZM16N 20]
+            alternate_definition [half] mainstream
+   [ZM16N 18 ZM16N 18]
+
+call "1/2 press north" mainstream
+            dont_use_in_resolve
+   matrix require_north [ZM16N 18 ZM16N 18]
+
+call "press south" mainstream
+            dont_use_in_resolve
+   matrix require_south [ZM16N 20 ZM16N 20]
+            alternate_definition [half] mainstream
+   [ZM16N 18 ZM16N 18]
+
+call "1/2 press south" mainstream
+            dont_use_in_resolve
+   matrix require_south [ZM16N 18 ZM16N 18]
+
+call "press east" mainstream
+            dont_use_in_resolve
+   matrix require_east [ZM16N 20 ZM16N 20]
+            alternate_definition [half] mainstream
+   [ZM16N 18 ZM16N 18]
+
+call "1/2 press east" mainstream
+            dont_use_in_resolve
+   matrix require_east [ZM16N 18 ZM16N 18]
+
+call "press west" mainstream
+            dont_use_in_resolve
+   matrix require_west [ZM16N 20 ZM16N 20]
+            alternate_definition [half] mainstream
+   [ZM16N 18 ZM16N 18]
+
+call "1/2 press west" mainstream
+            dont_use_in_resolve
+   matrix require_west [ZM16N 18 ZM16N 18]
+
 call "press back" mainstream
             dont_use_in_resolve
    matrix [ZM16N 12 ZM16N 12]
@@ -7275,6 +7317,128 @@ call "1/4 @h" mainstream tag quarter_dir
 
 call "quarter @h" mainstream
    alias quarter_dir
+
+// Caller-relative quarter turns. Every dancer must be perpendicular to
+// the requested direction; failure for any dancer rejects the whole call.
+call "quarter north" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E]
+         if facing_callers_left [AL0W]
+   setup short6 short6
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_left [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_left [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "1/4 north" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E]
+         if facing_callers_left [AL0W]
+   setup short6 short6
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_left [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter north requires every dancer to turn exactly 90 degrees."
+         if facing_callers_right [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_left [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "quarter south" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E]
+         if facing_callers_right [AL0W]
+   setup short6 short6
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_right [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_right [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "1/4 south" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E]
+         if facing_callers_right [AL0W]
+   setup short6 short6
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_right [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter south requires every dancer to turn exactly 90 degrees."
+         if facing_callers_left [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_callers_right [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "quarter east" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E]
+         if facing_away_from_caller [AL0W]
+   setup short6 short6
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_away_from_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_away_from_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "1/4 east" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E]
+         if facing_away_from_caller [AL0W]
+   setup short6 short6
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_away_from_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter east requires every dancer to turn exactly 90 degrees."
+         if facing_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_away_from_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "quarter west" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E]
+         if facing_caller [AL0W]
+   setup short6 short6
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+
+call "1/4 west" mainstream
+            dont_use_in_nice_resolve one_person_call
+   setup 1x1 1x1
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E]
+         if facing_caller [AL0W]
+   setup short6 short6
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
+   setup pshort6 short6
+      preds "Quarter west requires every dancer to turn exactly 90 degrees."
+         if facing_away_from_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
+         if facing_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
 
 call "@V 1/4 in" mainstream tag anyonequarterin
             dont_use_in_nice_resolve
