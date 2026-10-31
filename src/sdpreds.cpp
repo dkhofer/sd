@@ -68,6 +68,10 @@ extern bool selectp(const setup *ss, int place, int allow_some /*= 0*/) THROW_DE
       local_selector = selector_center2;
 
    switch (local_selector) {
+   case selector_north_facers: local_selector = selector_facingfront; break;
+   case selector_south_facers: local_selector = selector_facingback; break;
+   case selector_east_facers: local_selector = selector_facingleft; break;
+   case selector_west_facers: local_selector = selector_facingright; break;
    case selector_northerners:
    case selector_north: local_selector = selector_nearfour; break;
    case selector_north_line: local_selector = selector_nearline; break;
