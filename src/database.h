@@ -45,7 +45,7 @@
 // database format version.
 
 #define DATABASE_MAGIC_NUM 21316
-#define DATABASE_FORMAT_VERSION 436
+#define DATABASE_FORMAT_VERSION 437
 
 
 // We used to do some stuff to cater to compiler vendors (e.g. Sun
@@ -266,6 +266,14 @@ enum base_call_index {
    base_call_withflow,
    base_call_uturnback,
    base_call_anyoneuturnback,
+   base_call_quarter_north,
+   base_call_windmill_north,
+   base_call_quarter_south,
+   base_call_windmill_south,
+   base_call_quarter_east,
+   base_call_windmill_east,
+   base_call_quarter_west,
+   base_call_windmill_west,
    num_base_call_indices    // Not an actual enumeration item.
 };
 

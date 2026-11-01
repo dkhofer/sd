@@ -5318,6 +5318,19 @@ call "_centers @0 the windmill" dontshow tag ctr_any_windmill
 call "_outsides face @h" dontshow tag set_windmill_direction
    maybesingleconc nullcall [] quarter_maybe [endscando]
 
+// Caller-relative Windmill turns affect only the outsides.
+call "_outsides quarter north" dontshow tag windmill_north
+   maybesingleconc nullcall [] quarter_north [endscando]
+
+call "_outsides quarter south" dontshow tag windmill_south
+   maybesingleconc nullcall [] quarter_south [endscando]
+
+call "_outsides quarter east" dontshow tag windmill_east
+   maybesingleconc nullcall [] quarter_east [endscando]
+
+call "_outsides quarter west" dontshow tag windmill_west
+   maybesingleconc nullcall [] quarter_west [endscando]
+
 call "_finish spin the windmill, circ @9" dontshow tag finish_windmill
             neednumber left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
    maybesingleconc ctrwindmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
@@ -5352,6 +5365,67 @@ call "spin the windmill, outsides @h" a2
             sequence_starter left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
    seq set_windmill_direction []
    seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+
+// Cardinal outside directions retain the normal center action and Circulates.
+call "spin the windmill, outsides north" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
+   seq windmill_north []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+
+call "spin the windmill, outsides north and go @9 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
+   seq windmill_north []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+
+call "spin the windmill, outsides north and go @9-1/2 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
+   seq windmill_north []
+   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+
+call "spin the windmill, outsides south" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
+   seq windmill_south []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+
+call "spin the windmill, outsides south and go @9 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
+   seq windmill_south []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+
+call "spin the windmill, outsides south and go @9-1/2 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
+   seq windmill_south []
+   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+
+call "spin the windmill, outsides east" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
+   seq windmill_east []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+
+call "spin the windmill, outsides east and go @9 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
+   seq windmill_east []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+
+call "spin the windmill, outsides east and go @9-1/2 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
+   seq windmill_east []
+   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+
+call "spin the windmill, outsides west" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
+   seq windmill_west []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+
+call "spin the windmill, outsides west and go @9 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
+   seq windmill_west []
+   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+
+call "spin the windmill, outsides west and go @9-1/2 positions" a2
+            sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
+   seq windmill_west []
+   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
 
 call "spin the windmill, outsides go as you are" a2
             sequence_starter left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
@@ -7320,7 +7394,7 @@ call "quarter @h" mainstream
 
 // Caller-relative quarter turns. Every dancer must be perpendicular to
 // the requested direction; failure for any dancer rejects the whole call.
-call "quarter north" mainstream
+call "quarter north" mainstream tag quarter_north
             dont_use_in_nice_resolve one_person_call
    setup 1x1 1x1
       preds "Quarter north requires every dancer to turn exactly 90 degrees."
@@ -7350,7 +7424,7 @@ call "1/4 north" mainstream
          if facing_callers_right [CR0E CR1E CR2E CR3E CR4E CR5E]
          if facing_callers_left [AL0W AL1W AL2W AL3W AL4W AL5W]
 
-call "quarter south" mainstream
+call "quarter south" mainstream tag quarter_south
             dont_use_in_nice_resolve one_person_call
    setup 1x1 1x1
       preds "Quarter south requires every dancer to turn exactly 90 degrees."
@@ -7380,7 +7454,7 @@ call "1/4 south" mainstream
          if facing_callers_left [CR0E CR1E CR2E CR3E CR4E CR5E]
          if facing_callers_right [AL0W AL1W AL2W AL3W AL4W AL5W]
 
-call "quarter east" mainstream
+call "quarter east" mainstream tag quarter_east
             dont_use_in_nice_resolve one_person_call
    setup 1x1 1x1
       preds "Quarter east requires every dancer to turn exactly 90 degrees."
@@ -7410,7 +7484,7 @@ call "1/4 east" mainstream
          if facing_caller [CR0E CR1E CR2E CR3E CR4E CR5E]
          if facing_away_from_caller [AL0W AL1W AL2W AL3W AL4W AL5W]
 
-call "quarter west" mainstream
+call "quarter west" mainstream tag quarter_west
             dont_use_in_nice_resolve one_person_call
    setup 1x1 1x1
       preds "Quarter west requires every dancer to turn exactly 90 degrees."

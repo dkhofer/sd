@@ -1779,6 +1779,14 @@ tagtabitem tagtabinit[num_base_call_indices] = {
    {0, "withflow"},
    {0, "uturnback"},
    {0, "anyoneuturnback"},
+   {0, "quarter_north"},
+   {0, "windmill_north"},
+   {0, "quarter_south"},
+   {0, "windmill_south"},
+   {0, "quarter_east"},
+   {0, "windmill_east"},
+   {0, "quarter_west"},
+   {0, "windmill_west"},
 };
 
 int tagtabsize;          // Number of items we currently have in tagtab.
