@@ -5770,18 +5770,118 @@ the tag to a diamond}.)  You will often need to use the
 @item near 2 / far 2
 @item near 4 / far 4
 @item near 6 / far 6
+@item north / south / east / west
+These designate four dancers: @code{north} means @code{near 4},
+@code{south} means @code{far 4}, @code{east} means the four on the
+caller's left, and @code{west} means the four on the caller's right.
+The names @code{northerners}, @code{southerners}, @code{easterners}, and
+@code{westerners} are synonyms for these respective halves.
+They may designate the runners in @code{northerners run},
+@code{southerners run}, @code{easterners run}, or @code{westerners run}.
+The shorter names, such as @code{north run}, also work.  As with other
+designations for @code{run}, each runner must have a suitable non-runner
+to run around.
+These directions stay fixed relative to the caller, regardless of which
+way the dancers face.  East and west require an unambiguous separation
+of the eight dancers into left and right halves.
+@item north line / south line
+@item north column / south column
+@item north box / south box
+@item north 2 / south 2
+@item north 3 / south 3
+@item north 4 / south 4
+@item north 5 / south 5
+@item north 6 / south 6
+@item north 7 / south 7
+@item north triangle / south triangle
+North and south may replace near and far in these designations.
+@item east 4 / west 4
+These are equivalent to @code{east} and @code{west}.
+@item east line / west line
+@item east column / west column
+@item east box / west box
+These designate the corresponding formation on the caller's left or right.
 @item nearest person / farthest person
 @item the diamond
 Use this in an unsymmetrical setup when there is a diamond other than in the center.
 @item those facing the caller
+@item north facers
+These are equivalent designations. For example, @code{north facers trade}
+selects dancers facing toward the caller, wherever they stand.
 @item those facing away from the caller
+@item south facers
+These select dancers facing away from the caller.
 @item those facing the caller's left
+@item east facers
+These select dancers facing the caller's left.
 @item those facing the caller's right
+@item west facers
+These select dancers facing the caller's right. Use these facing selectors
+without a comma before the call, as in @code{west facers trade}.
 @item #1 boy / #2 boy / #3 boy / #4 boy
 @item #1 girl / #2 girl / #3 girl / #4 girl
 @item #1 couple / #2 couple / #3 couple / #4 couple
 @item couples 1 and 2 / couples 2 and 3 / couples 3 and 4 / couples 1 and 4
 @end table
+
+@subsection @code{SPIN THE WINDMILL, OUTSIDES NORTH/SOUTH/EAST/WEST}
+
+@code{spin the windmill, outsides north} also accepts @code{south},
+@code{east}, and @code{west}. Each outside must turn exactly 90 degrees
+to face the named caller-relative direction: north is toward the caller,
+south is away, east is to the caller's left, and west is to the caller's
+right. If any outside already faces that direction or its opposite,
+the entire call is rejected, leaving the formation unchanged.
+
+The centers perform their normal action, and the outsides then Circulate
+as usual. Asymmetric results are allowed. The @code{and go N positions}
+and @code{and go N-1/2 positions} variants also accept these directions.
+
+For the usual two Circulates, the outsides follow their original track
+through both steps. An intermediate collision does not rearrange that
+track. They finish diagonally opposite their starting spots and face the
+opposite direction. For example, after @code{heads fan the top},
+@code{spin the windmill, outsides south} ends in a 2-by-4 with the
+outsides facing north.
+
+@subsection @code{PRESS NORTH/SOUTH/EAST/WEST}
+
+@code{press north}, @code{press south}, @code{press east}, and
+@code{press west} perform @code{press ahead}, but only when every dancer
+already faces the named caller-relative direction. North is toward the
+caller, south is away, east is to the caller's left, and west is to the
+caller's right. The dancers do not turn to face that direction.
+
+If even one dancer faces another direction, the entire call is rejected
+and the formation remains unchanged. Half presses, such as
+@code{1/2 press north}, have the same requirement.
+
+@subsection @code{QUARTER NORTH/SOUTH/EAST/WEST}
+
+@code{quarter north}, @code{quarter south}, @code{quarter east}, and
+@code{quarter west} turn every dancer exactly 90 degrees to face the
+specified caller-relative direction. The @code{1/4 north} spelling and
+its equivalents are also supported. North is toward the caller, south
+is away, east is to the caller's left, and west is to the caller's right.
+
+To quarter north or south, every dancer must initially face east or west.
+To quarter east or west, every dancer must initially face north or south.
+If any dancer would need a zero-degree or 180-degree turn, the whole call
+is rejected, leaving the formation unchanged.
+
+@subsection @code{ROLL NORTH/SOUTH/EAST/WEST TO A WAVE}
+
+The compass directions may also specify the sideways movement in
+@code{roll north to a wave}, @code{roll south to a wave},
+@code{roll east to a wave}, and @code{roll west to a wave}.
+North is toward the caller; south is away from the caller; east is to the
+caller's left; west is to the caller's right.  Each tandem independently
+uses the left or right roll that moves its leader toward that direction.
+The result is permitted to be asymmetric.  A direction along the dancers'
+facing axis is rejected, since neither sideways roll moves that way.
+The alternative spelling @code{north roll to a wave} and the @code{leads}
+forms are also supported, for all four directions.  The existing left/right
+versions are unchanged.
 
 @subsection @code{ANYONE}
 

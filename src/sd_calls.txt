@@ -5361,6 +5361,42 @@ call "_finish nothing the windmill, circ @9-1/2" dontshow tag finish_nothing_win
    maybesingleconc cast_off_n4_with_warn [inherit_fractal inherit_gensting insert_number 3]
                    circ_n_times_and_a_half [conc_demand_lines conc_force_lines endscando]
 
+// Keep the original outside track through pairs of Circulates. Resolving
+// the intermediate collisions of an all-one-way box would change that track.
+call "_cardinal windmill circulate @9 times" dontshow tag cardinal_windmill_circs
+            neednumber
+   setup 2x2 2x2 qualifier num 2 all_facing_same
+      array [ZM2S ZM3S AL0S CR1S]
+   setup 2x2 2x2 qualifier num 4 all_facing_same
+      array [ZM0N ZM1N AL2N CR3N]
+   setup 2x2 2x2 qualifier num 6 all_facing_same
+      array [ZM2S ZM3S AL0S CR1S]
+   setup 2x2 2x2 qualifier num 8 all_facing_same
+      array [ZM0N ZM1N AL2N CR3N]
+   setup 2x2 2x2 qualifier num 10 all_facing_same
+      array [ZM2S ZM3S AL0S CR1S]
+   setup 2x2 2x2 qualifier num 12 all_facing_same
+      array [ZM0N ZM1N AL2N CR3N]
+   setup 2x2 2x2 qualifier num 14 all_facing_same
+      array [ZM2S ZM3S AL0S CR1S]
+            neednumber
+   seq circ_n_times []
+
+call "_finish cardinal spin the windmill, circ @9" dontshow tag finish_cardinal_windmill
+            neednumber left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
+   maybesingleconc ctrwindmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+                   cardinal_windmill_circs [conc_demand_lines conc_force_lines endscando]
+
+call "_cardinal windmill circulate @9-1/2 times" dontshow tag cardinal_windmill_circs_and_a_half
+            neednumber
+   seq cardinal_windmill_circs []
+   seq circulate [force_half]
+
+call "_finish cardinal spin the windmill, circ @9-1/2" dontshow tag finish_cardinal_windmill_and_a_half
+            neednumber left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
+   maybesingleconc ctrwindmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+                   cardinal_windmill_circs_and_a_half [conc_demand_lines conc_force_lines endscando]
+
 call "spin the windmill, outsides @h" a2
             sequence_starter left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
    seq set_windmill_direction []
@@ -5370,62 +5406,62 @@ call "spin the windmill, outsides @h" a2
 call "spin the windmill, outsides north" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
    seq windmill_north []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
 
 call "spin the windmill, outsides north and go @9 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
    seq windmill_north []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
 
 call "spin the windmill, outsides north and go @9-1/2 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
    seq windmill_north []
-   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+   seq finish_cardinal_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
 
 call "spin the windmill, outsides south" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
    seq windmill_south []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
 
 call "spin the windmill, outsides south and go @9 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
    seq windmill_south []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
 
 call "spin the windmill, outsides south and go @9-1/2 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
    seq windmill_south []
-   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+   seq finish_cardinal_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
 
 call "spin the windmill, outsides east" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
    seq windmill_east []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
 
 call "spin the windmill, outsides east and go @9 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
    seq windmill_east []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
 
 call "spin the windmill, outsides east and go @9-1/2 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
    seq windmill_east []
-   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+   seq finish_cardinal_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
 
 call "spin the windmill, outsides west" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited
    seq windmill_west []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal insert_number 2]
 
 call "spin the windmill, outsides west and go @9 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited fractal_is_inherited neednumber
    seq windmill_west []
-   seq finish_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
+   seq finish_cardinal_windmill [inherit_left inherit_yoyo inherit_gensting inherit_fractal]
 
 call "spin the windmill, outsides west and go @9-1/2 positions" a2
             sequence_starter left_means_mirror yoyo_is_inherited gen_sting_is_inherited neednumber
    seq windmill_west []
-   seq finish_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
+   seq finish_cardinal_windmill_and_a_half [inherit_left inherit_yoyo inherit_gensting]
 
 call "spin the windmill, outsides go as you are" a2
             sequence_starter left_means_mirror yoyo_is_inherited fractal_is_inherited gen_sting_is_inherited
